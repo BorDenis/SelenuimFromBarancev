@@ -12,6 +12,7 @@ def driver(request):
     # options = webdriver.FirefoxOptions()
     # options.binary_location = 'C:/Program Files/Firefox Nightly/firefox.exe'
     # wb = webdriver.Firefox(options=options)
+    # wb = webdriver.Firefox()
 
     # wb = webdriver.Ie()
 
@@ -50,8 +51,11 @@ def test_new_user_registration(driver):
     postcode.send_keys(u_postcode)
     city = create_account_box.find_element(By.XPATH, './/input[@name="city"]')
     city.send_keys(u_city)
-    country = Select(create_account_box.find_element(By.XPATH, './/select[@name="country_code"]'))
-    country.select_by_visible_text(u_country)
+    country = create_account_box.find_element(By.XPATH, './/span[@class="select2-selection__arrow"]')
+    country.click()
+    country_dropdown = create_account_box.find_element(
+        By.XPATH, f'//ul[@class="select2-results__options"]/li[text()="{u_country}"]')
+    country_dropdown.click()
     state = Select(create_account_box.find_element(By.XPATH, './/select[@name="zone_code"]'))
     state.select_by_visible_text(u_state)
     email = create_account_box.find_element(By.XPATH, './/input[@name="email"]')
@@ -80,4 +84,3 @@ def test_new_user_registration(driver):
     # Logout
     logout_link = driver.find_element(By.XPATH, '//div[@id="box-account"]//a[text()="Logout"]')
     logout_link.click()
-    print()
