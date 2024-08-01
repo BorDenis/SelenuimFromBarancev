@@ -13,6 +13,7 @@ def driver(request):
     # options = webdriver.FirefoxOptions()
     # options.binary_location = 'C:/Program Files/Firefox Nightly/firefox.exe'
     # wb = webdriver.Firefox(options=options)
+    # wb = webdriver.Firefox()
 
     # wb = webdriver.Ie()
 
@@ -63,7 +64,7 @@ def test_add_new_product(driver):
     sold_out_status = Select(driver.find_element(By.XPATH, '//select[@name="sold_out_status_id"]'))
     sold_out_status.select_by_visible_text('Temporary sold out')
     upload_image_file = driver.find_element(By.XPATH, '//input[@name="new_images[]"]')
-    upload_image_file.send_keys(getcwd() + '/images/cool_duck.png')
+    upload_image_file.send_keys(getcwd() + '\images\cool_duck.png')
     date_valid_from = driver.find_element(By.XPATH, '//input[@name="date_valid_from"]')
     date = datetime.now()
     date_valid_from.send_keys(f'{date.day}{date.month}{date.year}')
