@@ -21,7 +21,7 @@ def driver(request):
     return wb
 
 
-def test_add_new_product(driver):
+def test_add_to_cart_and_remove(driver):
     driver.implicitly_wait(2)
     driver.get('http://localhost/litecart/en/')
     wait = WebDriverWait(driver, 3)
