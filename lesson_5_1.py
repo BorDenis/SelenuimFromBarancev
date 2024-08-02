@@ -26,7 +26,7 @@ def test_check_sorting_for_countries_and_zones(driver):
     driver.find_element(By.NAME, 'login').click()
     assert driver.find_element(By.XPATH, '//*[@class="notice success"]')
     driver.implicitly_wait(2)
-    all_countries_rows = driver.find_elements(By.XPATH, '//tr[@class="row"]''')
+    all_countries_rows = driver.find_elements(By.XPATH, '//tr[@class="row"]')
     all_countries_names = [_.find_element(By.XPATH, './/td[5]').text for _ in all_countries_rows]
     assert all_countries_names == sorted(all_countries_names)
     for country in all_countries_rows:
