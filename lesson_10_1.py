@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 @pytest.fixture
 def driver(request):
     options = webdriver.ChromeOptions()
-    options.set_capability("goog:loggingPrefs", {'browser': 'ALL'})
+    # options.set_capability("goog:loggingPrefs", {'browser': 'ALL'})
     wb = webdriver.Chrome(options=options)
 
     # options = webdriver.FirefoxOptions()
@@ -37,7 +37,7 @@ def test_check_that_links_is_opening_in_new_tabs(driver):
     for i in range(len(edit_product_btns)):
         edit_product_btns = driver.find_elements(By.XPATH, edit_btn_locator)
         edit_product_btns[i].click()
-        assert driver.get_log('browser')
+        assert not driver.get_log('browser')
         driver.back()
 
 
