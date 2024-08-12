@@ -26,4 +26,6 @@ class Application:
 
     def remove_all_items_in_cart(self):
         self.cart_page.open()
-        self.cart_page.remove_first_item()
+        for _ in range(self.cart_page.get_order_summary_len()):
+            self.cart_page.remove_first_item()
+        assert self.cart_page.is_cart_are_empty()
